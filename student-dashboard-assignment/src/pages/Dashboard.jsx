@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export default function Dashboard() {
   const [students, setStudents] = useState([]);
   const [filter, setFilter] = useState("");
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
     axios.get("/students").then((res) => setStudents(res.data));
@@ -35,7 +35,11 @@ export default function Dashboard() {
         <div className="flex items-center space-x-4">
           <button
             onClick={toggleTheme}
-            className="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-200"
+            className={`px-4 py-2 rounded-lg transition duration-200 ${
+              theme === "dark"
+                ? "bg-gray-700 text-white hover:bg-gray-600"
+                : "bg-gray-300 text-gray-800 hover:bg-gray-400"
+            }`}
           >
             {theme === "light" ? "Dark Mode" : "Light Mode"}
           </button>
@@ -62,15 +66,24 @@ export default function Dashboard() {
         {filtered.map((student) => (
           <li
             key={student.id}
-            className={`border rounded-lg p-6 shadow-lg hover:shadow-xl transition duration-200 ${
+            className={`shadow-xl rounded-lg p-4 transition duration-200 ${
               theme === "dark"
-                ? "border-gray-700 bg-gray-800 text-white"
-                : "border-gray-200 bg-white text-gray-900"
+                ? "bg-gray-800 text-white border border-gray-700 hover:bg-gray-700"
+                : "bg-white text-gray-900 border border-gray-200 hover:bg-gray-100"
             }`}
           >
-            <div className="text-xl font-semibold mb-2">{student.name}</div>
-            <div className="text-gray-500 mb-1">{student.email}</div>
-            <div className="text-gray-400 italic">{student.course}</div>
+            <div className="flex items-center space-x-4">
+              <img
+                className="w-16 h-16 rounded-full"
+                src={`https://ui-avatars.com/api/?name=${student.name}&background=random`}
+                alt={student.name}
+              />
+              <div>
+                <h3 className="text-lg font-semibold">{student.name}</h3>
+                <p className="text-gray-500">{student.email}</p>
+                <p className="text-gray-400 italic">{student.course}</p>
+              </div>
+            </div>
           </li>
         ))}
       </ul>
