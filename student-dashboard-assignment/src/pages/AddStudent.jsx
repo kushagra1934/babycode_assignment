@@ -17,28 +17,28 @@ export default function AddStudent() {
   };
 
   return (
-    <div className="p-4 max-w-md mx-auto">
-      <div className="bg-white shadow-md rounded-lg p-6">
-        <h1 className="text-2xl font-bold mb-6 text-center text-gray-800">
+    <div className="p-4 min-h-screen bg-gray-900 text-white flex items-center justify-center">
+      <div className="bg-gray-800 shadow-md rounded-lg p-6 w-full max-w-md">
+        <h1 className="text-2xl font-bold mb-6 text-center text-white">
           Add Student
         </h1>
         <form onSubmit={submit} className="space-y-4">
           <input
             type="text"
             placeholder="Name"
-            className="border border-gray-300 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="border border-gray-700 rounded-lg p-3 w-full bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
             onChange={(e) => setForm({ ...form, name: e.target.value })}
           />
           <input
             type="email"
             placeholder="Email"
-            className="border border-gray-300 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="border border-gray-700 rounded-lg p-3 w-full bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
             onChange={(e) => setForm({ ...form, email: e.target.value })}
           />
           <input
             type="text"
             placeholder="Course"
-            className="border border-gray-300 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="border border-gray-700 rounded-lg p-3 w-full bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
             onChange={(e) => setForm({ ...form, course: e.target.value })}
           />
           <button className="bg-blue-600 text-white px-4 py-3 rounded-lg w-full hover:bg-blue-700 transition duration-200">
