@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import axios from "../api";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 
 export default function Dashboard() {
   const [students, setStudents] = useState([]);
@@ -87,6 +88,7 @@ export default function Dashboard() {
           </li>
         ))}
       </ul>
+      <Footer theme={theme} />
     </div>
   );
 }
